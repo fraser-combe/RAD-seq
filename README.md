@@ -1,2 +1,2 @@
 # RAD-seq
-Radseq analysis project 
+Radseq analysis project scripts
