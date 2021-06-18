@@ -1,0 +1,30 @@
+Dstuite
+
+$ git clone https://github.com/millanek/Dsuite.git
+
+To compile you must have a reasonably recent GCC (>=4.9.0) 
+module load foss #load tool chain with GCC compiler that is suitable
+$ cd Dsuite
+$ make
+
+[Optional] Installing the python3 Fbranch plotting script
+If you want to plot the results of the f-branch calcuation (see below), you will need to install the python script for this using setuptools. You need an internet connection as some python dependencies will be downloaded from pypi.org. It may be necessary to exit python or conda virtual environments for this to work correctly.
+module load Python
+$ cd utils
+$ python3 setup.py install --user --prefix=
+
+may need to do
+pip3 install cython
+
+
+
+###Running Dsuite with VCF file
+Dsuite Dtrios - Calculate the D (ABBA-BABA) and f4-ratio statistics for all possible trios of populations/species
+Usage: Dsuite Dtrios [OPTIONS] INPUT_FILE.vcf SETS.txt
+The SETS.txt should have two columns: SAMPLE_ID    SPECIES_ID
+
+Dsuite Dtrios input.vcf sets.txt
+Output:
+The output files with suffixes BBAA.txt, Dmin.txt, and optionally tree.txt (if the -t option was used) contain the results: the D statistics, Zscore, unadjusted p-values, the f4-ratios, and counts of the BBAA, BABA, and ABBA patterns. Please read the manuscript for more details.
+
+The output files with suffixes combine.txt and combine_stderr.txt are used as input to DtriosCombine. If you don't need to use DtriosCombine, you can safely delete these files.
