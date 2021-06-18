@@ -14,7 +14,7 @@ Radseq analysis project scripts
 # Filter
 Filter VCF
 
-Remove outliers from PCAdapta and Bayescan
+Remove outliers from PCAdapt and Bayescan
 # Analyses
 
 Dsuite
