@@ -11,4 +11,21 @@ Radseq analysis project scripts
 
 4.Stacks Populations.sh
 
+# Filter
+Filter VCF
+
+Remove outliers from PCAdapta and Bayescan
+# Analyses
+
+Dsuite
+
+Treemix
+
+Bayescan
+
+PCAdapt
+
+
+
+
 
