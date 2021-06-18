@@ -1,0 +1,15 @@
+#   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
+# assembly_accession	bioproject	biosample	wgs_master	refseq_category	taxid	species_taxid	organism_name	infraspecific_name	isolate	version_status	assembly_level	release_type	genome_rep	seq_rel_date	asm_name	submitter	gbrs_paired_asm	paired_asm_comp	ftp_path	excluded_from_refseq	relation_to_type_material
+GCF_000181275.1	PRJNA193513	SAMN00210854	AALT00000000.2	representative genome	42254	42254	Sorex araneus		GB8-d	latest	Scaffold	Major	Full	2012/08/27	SorAra2.0	Broad Institute	GCA_000181275.2	identical	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/181/275/GCF_000181275.1_SorAra2.0
+
+Download the ref genome to Beocat using the command
+
+
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/181/275/GCF_000181275.1_SorAra2.0/GCF_000181275.1_SorAra2.0_genomic.fna.gz
+
+#Then Unzip
+
+gunzip GCF_000181275.1_SorAra2.0_genomic.fna.gz
+
+
+
