@@ -1,0 +1,33 @@
+
+##Install Structure_Threader
+https://structure-threader.readthedocs.io/en/latest/install/
+module load Python/3.8.6-GCCcore-10.2.0
+you can type python3 --version from a terminal to see if python 3 is installed
+
+pip3 install structure_threader --user
+
+#Running the command from step 1 will install the program to ~/.local/bin. You can either run it by calling it directly ~/.local/bin/structure_threader
+# Also note that on GNU/Linux installing Structure_threader will also automatically install binaries for STRUCTURE, fastStructure and MavericK, which will also be placed under ~/.local/bin.
+
+#Sometime the structure file wont run on the computational cluster due to formatting errors at the end fo the file. It is reccomended to try this to convert to unixfile and it usually works.
+
+perl -p -e 's/\r$//' < NAMESTRUCTUREFILE.str > unixfile.txt
+
+#Run Structure Threader bash script
+#!/bin/bash
+#SBATCH --job-name=structure
+#SBATCH --time=24:00:00
+#SBATCH --mem=32G
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --output=outputstr.%j
+#### SLURM 1 processor test to run for 24hours
+module load Perl
+module load Python/3.8.6-GCCcore-10.2.0
+
+#run stacks populations
+structure_threader run -K 10 -R 10 -i Structureinputfile -o ./structureoutputfile -t 20 -st ./Software/structure/structure
+
+###############################Output#############
+
+# You will have a folder with the output k files, and folders for best K and Plots. 
