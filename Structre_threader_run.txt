@@ -9,9 +9,14 @@ pip3 install structure_threader --user
 #Running the command from step 1 will install the program to ~/.local/bin. You can either run it by calling it directly ~/.local/bin/structure_threader
 # Also note that on GNU/Linux installing Structure_threader will also automatically install binaries for STRUCTURE, fastStructure and MavericK, which will also be placed under ~/.local/bin.
 
-#Sometime the structure file wont run on the computational cluster due to formatting errors at the end fo the file. It is reccomended to try this to convert to unixfile and it usually works.
+#Sometime the structure file wont run on the computational cluster due to formatting errors at the end fo the file. It is reccomended to try this to convert to unixfile and it usually works. 
+
 
 perl -p -e 's/\r$//' < NAMESTRUCTUREFILE.str > unixfile.txt
+
+#Check file and then number of columns i.e number of SNPS that goes into mainparams file
+
+awk -F'\t' '{print NF}' filenamehere | sort -nu | tail -n 1
 
 #Run Structure Threader bash script
 #!/bin/bash
