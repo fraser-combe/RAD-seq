@@ -26,4 +26,12 @@ done
 In beocat then load SAMtools
 
 then
-for file in *.bam; do samtools sort $file > ${file/.bam/_sorted.bam}; done
+module load SAMtools/0.1.20-foss-2018b
+####bamtosortedbam
+for file in *.bam; do samtools sort $file > ${file/.bam/.sorted.bam}; done
+
+##index
+for file in *.fq.sorted.bam; do samtools index $file; done 
+
+##renameto.bamfiles
+for file in *.fq.sorted.bam; do mv -- "$file" "${file%.fq.sorted.bam}.bam"; done
