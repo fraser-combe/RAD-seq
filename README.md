@@ -4,7 +4,7 @@ Radseq analysis project scripts
 # Stacks
 
 1.processradtags.sh
-Load Stacjs
+Load Stacks
 Run Process radtags. We already ran trimscript.sh to clean reads and trim to correct length so this script should be quick, we should not loose many reads and makes sure all files are in correct format for refmap.pl Stacks
 
 2.BWA to BAM
