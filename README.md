@@ -1,5 +1,5 @@
 # RAD-seq
-Radseq analysis project scripts
+Radseq analysis projects scripts
 
 # Stacks
 
