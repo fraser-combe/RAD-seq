@@ -13,10 +13,16 @@ pip3 install structure_threader --user
 
 
 perl -p -e 's/\r$//' < NAMESTRUCTUREFILE.str > unixfile.txt
+or
+awk '{ sub("\r$", ""); print }' NAMESTRUCTUREFILE.str > unixfile.txt
+
 
 #Check file and then number of columns i.e number of SNPS that goes into mainparams file
 
 awk -F'\t' '{print NF}' filenamehere | sort -nu | tail -n 1
+
+#edit mainparams file to ensure locations is 0 for no populations and number of snps/loci is correct. 
+
 
 #Run Structure Threader bash script
 #!/bin/bash
@@ -30,7 +36,7 @@ awk -F'\t' '{print NF}' filenamehere | sort -nu | tail -n 1
 module load Perl
 module load Python/3.8.6-GCCcore-10.2.0
 
-#run stacks populations
+#run structure threader
 structure_threader run -K 10 -R 10 -i Structureinputfile -o ./structureoutputfile -t 20 -st ./Software/structure/structure
 
 ###############################Output#############
