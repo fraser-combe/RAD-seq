@@ -11,7 +11,7 @@
 module load VCFtools/0.1.16-GCC-9.3.0
 # define arguments
 
-inputFile=hybrids.vcf
+inputFile=vcffile.vcf
 
 
 #### adaptive SNPs ####
