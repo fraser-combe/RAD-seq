@@ -1,0 +1,55 @@
+#-------------------------------------------------------------------------------
+
+# This script performs hybrid index estimation with introgress (Gompert & Buerkle 2010).
+
+#-------------------------------------------------------------------------------
+
+# Install dependencies
+
+install.packages("introgress",dependencies=TRUE)
+
+library(introgress)
+
+
+## produce triangle plots
+#
+## use prepare.data to produce introgress.data
+introgress.data<-prepare.data(admix.gen=AdmixDataSim1,
+                              loci.data=loci.data,
+                              parental1="P1", parental2="P2",
+                              pop.id=FALSE, ind.id=TRUE,
+                              fixed=TRUE)
+
+## estimate hybrid index
+hi.index<-est.h(introgress.data=introgress.data,
+                loci.data=loci.data, fixed=TRUE, p1.allele="P1",
+                p2.allele="P2")
+
+## Estimate interspecific heterozygosity
+int.het<-calc.intersp.het(introgress.data=hybrid.index)
+
+## make plot
+triangle.plot(hi.index=hi.index, int.het=int.het, pdf=FALSE)
+
+#######Plotting triange plot raw code
+
+hi.index=hybrid.index
+int.het=int.het 
+hi.index<-hi.index[,2]
+hi.index$Colour="black"
+hi.index$Colour[hi.index$h>=0.5]="red"
+hi.index$Colour[hi.index$h<=0.5]="blue"
+# plot
+plot(data$col_name1,data$col_name2, ylim=c(0,5), col=data$Colour, ylim=c(0,10))
+plot(hi.index$h,int.het,xlab="Hybrid index",ylab="Interspecific heterozygosity",xlim=c(0,1),ylim=c(0,1),pch=19, col=hi.index$Colour, cex=1.5)
+lines(c(0,0.5),c(0,1),lwd = 2)
+lines(c(0.5,1),c(1,0),lwd = 2)
+
+text(0.5,0.15,"Historical Introgression")
+text(0.5,0.9,"F1")
+text(0.5,0.52,"F2")
+text(0.2,0.65,"Bx P1")
+text(0.8,0.65,"Bx P2")
+#Parental
+text(0.1,0.02,"P1 S.cinereus")
+text(0.9,0.02,"P2 S.ugyunak")
